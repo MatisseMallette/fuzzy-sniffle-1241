@@ -1,6 +1,6 @@
 class ChefsController < ApplicationController 
   def show 
-    @chef = Chef.find(chef_params)
+    @chef = Chef.find(chef_params[:id])
   end
 
   def edit 
@@ -8,9 +8,10 @@ class ChefsController < ApplicationController
   end
 
   def update 
-    dish = Dish.find(params[:name])
-    dish.update(chef_id: @chef.id)
-    redirect_to "/chefs/#{@chef.id}"
+    chef = Chef.find(params[:chef_id])
+    dish = Dish.find_by(name: params[:name])
+    dish.update(chef_id: chef.id)
+    redirect_to "/chefs/#{chef.id}"
   end
 
   private 

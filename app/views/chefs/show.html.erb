@@ -4,7 +4,7 @@
 <%= dish.name %><br>
 <% end %>
  
-<%= form_with url: "/chefs/#{@chef.id}", method: :patch, local: true do |form| %>
+<%= form_with url: "/chefs/#{@chef.id}?chef_id=#{@chef.id}", method: :patch, local: true do |form| %>
   <%= form.label :name %>
   <%= form.text_field :name%>
   <%= form.submit "Select Dish" %>
